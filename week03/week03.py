@@ -9,9 +9,20 @@ def move_zeroes(a_arr) :
             zero_index += 1
     return a_arr
 
+def move_zeroes_v2(l):
+    zero_idx = 0
+    for i in range(len(l)):
+        n=l[i]
+        if n!= 0:
+            l[zero_idx] = n
+            if zero_idx != i:
+                l[i] = 0
+    return l
+
 arr = array.array('i', [99, 0, -7, 0 , 16])
 for i in range(len(arr)):
     print(f"{arr[i]:5}, {id(arr[i])}")
+
 
 move_zeroes(arr)
 print(arr)
