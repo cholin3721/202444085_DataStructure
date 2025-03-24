@@ -1,15 +1,19 @@
-groups = ['HOT', 'Seventeen', 'Black Pink', 'NJZ']
+cities = ['Suwon', 'Hwasung', 'Incheon', 'Bucheon', 'Incheon', 'Seoul']
+cities = set(cities)
+print(cities)
 
-# ratings = [1, 2, 4, 3, 100]
-ratings = [1, 2, 4, 3]
-
-# zip 함수는 zip 객체로 리턴함
-# 그래서 list() 변환 해줘야함
-# dict() 하면 튜플 앞에 꺼는 키, 두 번째는 value로 다룸
-
-group_rating = list(zip(groups, ratings))
-print(group_rating)
-
+# groups = ['HOT', 'Seventeen', 'Black Pink', 'NJZ']
+#
+# # ratings = [1, 2, 4, 3, 100]
+# ratings = [1, 2, 4, 3]
+#
+# # zip 함수는 zip 객체로 리턴함
+# # 그래서 list() 변환 해줘야함
+# # dict() 하면 튜플 앞에 꺼는 키, 두 번째는 value로 다룸
+#
+# group_rating = list(zip(groups, ratings))
+# print(group_rating)
+#
 
 
 
