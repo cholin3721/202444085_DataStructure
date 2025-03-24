@@ -1,6 +1,22 @@
+def duplicate_city(cities) :
+    result_city = []
+    s = set()
+    for city in cities :
+        l1 = len(s)
+        s.add(city)
+        l2 = len(s)
+        if l1 == l2 :
+            result_city.append(city)
+    return result_city
+
 cities = ['Suwon', 'Hwasung', 'Incheon', 'Bucheon', 'Incheon', 'Seoul']
-cities = set(cities)
+# cities = set(cities)
+cities.append('Seoul')
+cities.append('Anyang')
+cities.append('Incheon')
+
 print(cities)
+print(set(duplicate_city(cities)))
 
 # groups = ['HOT', 'Seventeen', 'Black Pink', 'NJZ']
 #
