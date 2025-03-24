@@ -5,6 +5,12 @@ def inters(l1, l2) :
             l3.append(v)
     return l3
 
+def inters_v2(l1, l2) :
+    s1 = set(l1)
+    s2 = set(l2)
+    # return list(s1. intersection(s2))
+    return list(s1 & s2)  # 교집합 :intersection(&), 합집합 : union(|) s1.union(s2) 차집합 : s1-s2
+
 l1 = [45, 5, 22, 31, 7, 19]
 l2 = [2, 1, 5, 22, 7, 38, 27, 19, 13, 41]
 
