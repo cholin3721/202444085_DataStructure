@@ -36,7 +36,7 @@ class LinkedList :
 
 
     def remove(self, target):
-        current = self.head
+        current = self.head  # current 이동, 삭제할 노드의 링크도 완전하게 끊기 위해
         previous = None
 
         if current.data == target:  # 노드 자체랑 데이터랑 비교하는 것이 아닌, 노드의 데이터와 비교해야 함
