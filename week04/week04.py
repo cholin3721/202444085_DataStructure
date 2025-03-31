@@ -35,6 +35,19 @@ class LinkedList :
                 return  # 내가 만들어 본거
 
 
+    def remove(self, target):
+        if self.head.data == target:  # 노드 자체랑 데이터랑 비교하는 것이 아닌, 노드의 데이터와 비교해야 함
+            self.head = self.head.link
+            return
+        current = self.head
+        previous = None
+        while current :
+            if current.data == target:
+                previous.link = current.link  # 찾으면 지울 녀석 포인터를 전 노드 포인터에다 넣음
+            previous = current
+            current = current.link
+
+
     def __str__(self):
         # current = self.head
         # while current is not None :
@@ -62,22 +75,26 @@ class LinkedList :
         return f"{target} 은(는) 링크드 리스트 안에 존재하지 않습니다!"
 
 
-# ll = LinkedList()
-# ll.append(8)
-# ll.append(10)
-# ll.append(-9)
-#
+ll = LinkedList()
+ll.append(8)
+ll.append(10)
+ll.append(-9)
+ll.remove(10)
+ll.remove(8)
+print(ll)
+
+
 # ll.print()
 # print()
 # print(ll)
 # print()
 # print(ll.search(10))  # __str__ method search method
 
-ll = LinkedList()
-for _ in range(20) :
-    # j = random.randint(1, 30)
-    # ll.append(j)
-    # print(j, end=" ")  책에 있는 코드,
-    ll.append(random.randint(1, 30))
-print(ll)
-print(ll.search(10))
+# ll = LinkedList()
+# for _ in range(20) :
+#     # j = random.randint(1, 30)
+#     # ll.append(j)
+#     # print(j, end=" ")  책에 있는 코드,
+#     ll.append(random.randint(1, 30))
+# print(ll)
+# print(ll.search(10))
