@@ -26,7 +26,22 @@ class LinkedList :
             print(current.data)
             current = current.link
             if current == None :
-                break
+                return  # 내가 만들어 본거
+
+    def __str__(self):
+        # current = self.head
+        # while current is not None :
+        #     print(current.data, end=" -> ")
+        #     current = current.link
+        # return "END"
+        # return "Linked List!"
+
+        current = self.head
+        out_texts = ""
+        while current is not None :
+            out_texts = out_texts + str(current.data) + " -> "
+            current = current.link
+        return out_texts + "END"
 
 ll = LinkedList()
 ll.append(8)
@@ -34,4 +49,5 @@ ll.append(10)
 ll.append(-9)
 
 ll.print()
+print()
 print(ll)
