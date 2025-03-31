@@ -36,14 +36,18 @@ class LinkedList :
 
 
     def remove(self, target):
-        if self.head.data == target:  # 노드 자체랑 데이터랑 비교하는 것이 아닌, 노드의 데이터와 비교해야 함
-            self.head = self.head.link
-            return
         current = self.head
         previous = None
+
+        if current.data == target:  # 노드 자체랑 데이터랑 비교하는 것이 아닌, 노드의 데이터와 비교해야 함
+            self.head = self.head.link
+            current.link = None
+            return
+
         while current :
             if current.data == target:
                 previous.link = current.link  # 찾으면 지울 녀석 포인터를 전 노드 포인터에다 넣음
+                current.link = None
             previous = current
             current = current.link
 
@@ -79,6 +83,7 @@ ll = LinkedList()
 ll.append(8)
 ll.append(10)
 ll.append(-9)
+# ll.remove(10)
 ll.remove(10)
 ll.remove(8)
 print(ll)
