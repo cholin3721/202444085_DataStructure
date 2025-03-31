@@ -3,9 +3,11 @@ class Node:
         self.data = data
         self.link = link
 
+
 class LinkedList :
     def __init__(self):
         self.head = None
+
 
     def append(self, data):
         if not self.head :
@@ -15,6 +17,7 @@ class LinkedList :
         while current.link :
             current = current.link
         current.link = Node(data)
+
 
     def print(self):
         if self.head == None :
@@ -27,6 +30,7 @@ class LinkedList :
             current = current.link
             if current == None :
                 return  # 내가 만들어 본거
+
 
     def __str__(self):
         # current = self.head
@@ -44,6 +48,17 @@ class LinkedList :
             current = current.link
         return out_texts + "END"
 
+
+    def search(self, target):
+        current = self.head
+        while current.link :
+            if target == current.data:
+                return f"{target} 을(를) 찾았습니다!"
+            else:
+                current = current.link  # move current
+        return f"{target} 은(는) 링크드 리스트 안에 존재하지 않습니다!"
+
+
 ll = LinkedList()
 ll.append(8)
 ll.append(10)
@@ -52,3 +67,5 @@ ll.append(-9)
 ll.print()
 print()
 print(ll)
+print()
+print(ll.search(10))
