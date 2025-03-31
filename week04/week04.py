@@ -41,13 +41,13 @@ class LinkedList :
 
         if current.data == target:  # 노드 자체랑 데이터랑 비교하는 것이 아닌, 노드의 데이터와 비교해야 함
             self.head = self.head.link
-            current.link = None
+            current.link = None  # 삭제할 노드의 링크도 끊어주는 작업
             return
 
         while current :
             if current.data == target:
                 previous.link = current.link  # 찾으면 지울 녀석 포인터를 전 노드 포인터에다 넣음
-                current.link = None
+                current.link = None  # 삭제할 노드의 링크도 끊어주는 작업
             previous = current
             current = current.link
 
