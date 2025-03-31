@@ -1,3 +1,9 @@
+def my_zip(l1, l2):
+    r = []
+    for i in range(len(l1) if len(l1)<len(l2) else len(l2)):
+        r.append((l1[i], l2[i]))
+    return r
+
 def inters(l1, l2) :
     l3 = list()
     for v in l1 :
