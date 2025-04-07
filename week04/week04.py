@@ -47,8 +47,7 @@ class LinkedList :
         while current :
             if current.data == target:
                 previous.link = current.link  # 찾으면 지울 녀석 포인터를 전 노드 포인터에다 넣음
-                current.link = None  # 삭제할 노드의 링크도 끊어주는 작업
-            previous = current
+                current.link = None  # 삭제할 노드의 링크도 끊어주는 작업            previous = current
             current = current.link
 
 
