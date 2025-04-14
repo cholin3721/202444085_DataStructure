@@ -77,14 +77,36 @@ class LinkedList :
                 current = current.link  # move current
         return f"{target} 은(는) 링크드 리스트 안에 존재하지 않습니다!"
 
+    def reverse(self):
+        current = self.head
+        previous = None
+        while current :
+            next = current.link  # 생각은 했는데 직접 시도 안해본 내 잘못.
+            current.link = previous
+            previous = current
+            current = next
+        self.head = previous
+
+    def check_cycle(self):  # 생각해보니 인덱스를 지원하지 않아서 visited로 사이클을 체크하기엔 무리다.
+        slow = self.head  # 이 알고리즘에 핵심은 사이클이 있다면 무한루프로 계속 돌아서 언젠간 따라잡는다는 이론. 아니면 일자로 쭉가서 false 반환
+        fast = self.head
+        while True :
+            try :
+                slow = slow.link
+                fast = fast.link.link
+                if slow is fast :
+                    return True
+            except :
+                return False
 
 ll = LinkedList()
 ll.append(8)
 ll.append(10)
 ll.append(-9)
 # ll.remove(10)
-ll.remove(10)
-ll.remove(8)
+# ll.remove(10)
+# ll.remove(8)
+ll.reverse()
 print(ll)
 
 
