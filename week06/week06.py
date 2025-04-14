@@ -13,7 +13,7 @@ class Queue :
     def enqueue(self, data):
         self.size += 1
         node = Node(data)
-        if self.rear is None :
+        if self.front is None :
             self.front = node
             self.rear = node
         else :
