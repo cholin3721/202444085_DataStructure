@@ -37,3 +37,25 @@ if __name__ == "__main__" :
                 current = current.right
     print("BST Structuring Complete")
     post_order(root)
+    print()
+    find_number = int(input())
+    current = root
+
+    while True:
+        if find_number == current.data:
+            print(f"{find_number}을(를) 찾았습니다.")
+            break
+
+        elif find_number < current.data:
+            if current.left is None :
+                print(f"{find_number}을(를) 찾을 수 없습니다.")
+                break
+            current = current.left
+
+        else :
+            if current.right is None :
+                print(f"{find_number}을(를) 찾을 수 없습니다.")
+                break
+            current = current.right
+
+        print("탐색 종료")
