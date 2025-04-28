@@ -21,12 +21,13 @@ class LinkedList:
 
     def remove(self, target):
         current = self.head
+        previous = None
         # if self.head.data == target:
         if current.data == target:
             self.head = self.head.link
             current.link = None
             return
-        previous = None
+
         while current:
             if current.data == target:
                 previous.link = current.link
