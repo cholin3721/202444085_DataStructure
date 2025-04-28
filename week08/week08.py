@@ -7,19 +7,17 @@ def post_order(node) :
 
 
 def in_order(node) :
-    if node is None :
-        return
-    in_order(node.left)
-    print(node.data, end='-')
-    in_order(node.right)
+    if node :  # 이렇게 해도 상관 없다. 좀더 간결한 버전!
+        in_order(node.left)
+        print(node.data, end='-')
+        in_order(node.right)
 
 
 def pre_order(node) :
-    if node is None :
-        return
-    print(node.data, end='-')
-    pre_order(node.left)
-    pre_order(node.right)
+    if node:  # 이렇게 해도 상관 없다. 좀더 간결한 버전!
+        print(node.data, end='-')
+        pre_order(node.left)
+        pre_order(node.right)
 
 
 class TreeNode :
