@@ -1,3 +1,6 @@
+from numpy.ma.core import left_shift
+
+
 class TreeNode :
     def __init__(self):
         self.left = None
@@ -12,14 +15,14 @@ def post_order(node) :
     print(node.data, end= ' -> ')
 
 
-def insert(root, value) :
+def insert(node, value) :
     new_node = TreeNode()
     new_node.data = value
 
-    if root is None :  # 첫 번째 노드 처리
+    if node is None :  # 첫 번째 노드 처리
         return new_node
 
-    current = root
+    current = node
     while True:
         if value < current.data:
             if current.left is None:
@@ -32,11 +35,11 @@ def insert(root, value) :
                 break
             current = current.right
 
-    return root
+    return node
 
 
-def search(root, search_value) :
-    current = root
+def search(node, search_value) :
+    current = node
 
     while True:
         if search_value == current.data:
@@ -52,8 +55,32 @@ def search(root, search_value) :
                 return False
             current = current.right
 
+def delete(node, value) :
+    if node is None :
+        return None
+    if value < node.data :
+        node.left = delete(node.left, value)
+    elif value > node.data :
+        node.right = delete(node.right, value)
+    else :  # 삭제할 노드 발견
+        # 자식 노드가 1개 이거나 leaf 노드일 경우
+        if node.left is None :
+            return node.right
+        elif node.right is None :
+            return node.left
+        else :
+            min_larger_node = node.right
+            while min_larger_node.left:
+                min_larger_node = min_larger_node.left  # move
+            # 이 두 코드는 무조건 실행되어야 하는 코드. 즉, 이게 while문 안에 있으면 결국 찾았을때
+            node.data = min_larger_node.data
+            # 찾은 노드 제외하고 오른쪽에서 삭제
+            node.right = delete(node.right, min_larger_node.data)
+
+    return node
+
 if __name__ == "__main__" :
-    numbers = [10, 15, 8, 3, 9, 1, 7, 100]
+    numbers = [10, 15, 8, 3, 9, 14]
     root = None
 
     for number in numbers:
@@ -67,6 +94,14 @@ if __name__ == "__main__" :
     flag = search(root, find_number)  # 입력 부분을 search 함수에서 제거
     print(f"{find_number}을(를) 찾았습니다." if flag else f"{find_number}이(가) 존재하지 않습니다.")
 
+    delete_number = int(input("삭제할 값 입력 : "))
+    root = delete(root, delete_number)
+    post_order(root)
+    print()
+    pre_order(root)
+    print()
+    in_order(root)
+    print()
     # while True:
     #     if find_number == current.data:
     #         print(f"{find_number}을(를) 찾았습니다.")
