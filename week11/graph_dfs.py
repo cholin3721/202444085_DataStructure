@@ -17,6 +17,11 @@ def dfs(g, i, visited) :
             dfs(g, j, visited)
 
 
-visited_dfs = [0 for _ in range(len(graph))]
+def bfs(g, i, visited) :
 
+visited_dfs = [0 for _ in range(len(graph))]
+visited_bfs = [0 for _ in range(len(graph))]
+print()
 dfs(graph, 6, visited_dfs)
+print()
+bfs(graph, 6, visited_bfs)
