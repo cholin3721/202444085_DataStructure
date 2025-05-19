@@ -55,13 +55,13 @@ def search(node, search_value) :
                 return False
             current = current.right
 
-def delete(node, value) :
+def delete_right(node, value) :
     if node is None :
         return None
     if value < node.data :
-        node.left = delete(node.left, value)
+        node.left = delete_right(node.left, value)
     elif value > node.data :
-        node.right = delete(node.right, value)
+        node.right = delete_right(node.right, value)
     else :  # 삭제할 노드 발견
         # 자식 노드가 1개 이거나 leaf 노드일 경우
         if node.left is None :
@@ -75,8 +75,32 @@ def delete(node, value) :
             # 이 두 코드는 무조건 실행되어야 하는 코드. 즉, 이게 while문 안에 있으면 결국 찾았을때
             node.data = min_larger_node.data
             # 찾은 노드 제외하고 오른쪽에서 삭제
-            node.right = delete(node.right, min_larger_node.data)
+            node.right = delete_right(node.right, min_larger_node.data)
 
+    return node
+
+
+def delete_left(node, value) :
+    if node is None :
+        return None
+    if value < node.data :
+        node.left = delete_left(node.left, value)
+    elif value > node.data :
+        node.right = delete_left(node.right, value)
+    else :  # 삭제할 노드 발견
+        # 자식 노드가 1개 이거나 leaf 노드일 경우
+        if node.left is None :
+            return node.right
+        elif node.right is None :
+            return node.left
+        else :
+            max_smaller_node = node.left
+            while max_smaller_node.right:
+                max_smaller_node = max_smaller_node.right  # move
+            # 이 두 코드는 무조건 실행되어야 하는 코드. 즉, 이게 while문 안에 있으면 결국 찾았을때
+            node.data = max_smaller_node.data
+            # 찾은 노드 제외하고 오른쪽에서 삭제
+            node.left = delete_left(node.left, max_smaller_node.data)
     return node
 
 if __name__ == "__main__" :
@@ -95,12 +119,9 @@ if __name__ == "__main__" :
     print(f"{find_number}을(를) 찾았습니다." if flag else f"{find_number}이(가) 존재하지 않습니다.")
 
     delete_number = int(input("삭제할 값 입력 : "))
-    root = delete(root, delete_number)
+    # root = delete_right(root, delete_number)
+    root = delete_left(root, delete_number)
     post_order(root)
-    print()
-    pre_order(root)
-    print()
-    in_order(root)
     print()
     # while True:
     #     if find_number == current.data:
