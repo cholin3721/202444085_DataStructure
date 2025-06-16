@@ -4,6 +4,7 @@ class TreeNode :
         self.data = None
         self.right = None
 
+
 def post_order(node) :
     if node is None :
         return

@@ -25,3 +25,4 @@ for i in range(n):
       print(-1)
     else:
       print(stack[-1])  # Top 값 출력
+
